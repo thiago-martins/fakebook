@@ -206,9 +206,14 @@ pt-BR:
   activerecord:
     models:
       user: Usuário
+      post: Post
     attributes:
       user:
         password: Senha
+        name: Nome
+      post:
+        body: Comentário
+        image: Imagem
     errors:
       <<: *errors
   views:
