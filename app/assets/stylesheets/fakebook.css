@@ -541,6 +541,10 @@ fieldset legend {
 
 #error_explanation{
   padding-left: 70px;
+  h2{
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
 }
 
 .error label, label.error {
