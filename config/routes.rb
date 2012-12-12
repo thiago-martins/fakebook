@@ -1,4 +1,7 @@
 Fakebook::Application.routes.draw do
+  resources :comments
+
+
   resources :posts
 
 
@@ -8,13 +11,15 @@ Fakebook::Application.routes.draw do
 
   get "frontend/index"
 
-  root to: 'home#index'
+  # root to: 'home#index'
 
   get "home/index"
 
   get 'equipe/(:nome)' => 'frontend#equipe'
 
   get 'cadastro/de/contatos' => 'frontend#contato'
+
+  root to: 'posts#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
