@@ -8,59 +8,63 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
+  <% if current_user %>
+    <body class="area-privada">
+  <% else %>
+    <body class="area-publica">
+  <% end %>
+      <header id="header" role="banner">
+        <div id="header-inner">
+          <div id="logo">
+            <a href="/">Fakebook</a>
+          </div>
 
-  <body class="area-publica">
-    <header id="header" role="banner">
-      <div id="header-inner">
-        <div id="logo">
-          <a href="/">Fakebook</a>
-        </div>
-        
-        <!-- 
-        logado
-        #####
-        
-        <nav class="nav-user" role="navigation">
-          <ul>
-            <li class="item-avatar">
-              <div class="user-avatar small">
-                <div class="user-avatar-inner">
-                  <img width="24" height="24" src="/assets/user-chuck.jpg">
+          <% if current_user %>
+          
+          <nav class="nav-user" role="navigation">
+            <ul>
+              <li class="item-avatar">
+                <div class="user-avatar small">
+                  <div class="user-avatar-inner">
+                    <%= image_tag(current_user.avatar.thumb, width: 24) %>
+                  </div>
                 </div>
-              </div>
-            </li>
-            <li class="item-username">
-              <a href="#" title="Minha Conta"><b>Chuck Norris</b></a>
-            </li>
-            <li class="item-logout">
-              <a href="#">Sair</a>
-            </li>
-          </ul>
-        </nav>
-         -->
-         
-         <div id="user-login">
-           <form>
-             <div class="user-login-email">
-               <label for="field-email">Email</label>
-               <input type="text">
-             </div>
+              </li>
+              <li class="item-username">
+                <a href="#" title="Minha Conta"><b><%= current_user.name %></b></a>
+              </li>
+              <li class="item-logout">
+                <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </nav>
 
-             <div class="user-login-password">
-               <label for="field-password">Senha</label>
-               <input type="password">
-               <a href="#" class="text">Esqueceu sua senha?</a>
-             </div>
+          <% else %> 
 
-             <div class="user-login-actions">
-               <button class="small button">Entrar</button>
-             </div>
+           <div id="user-login">
+             <form>
+               <div class="user-login-email">
+                 <label for="field-email">Email</label>
+                 <input type="text">
+               </div>
 
-           </form>
-         </div>
-         
-      </div>
-    </header>
+               <div class="user-login-password">
+                 <label for="field-password">Senha</label>
+                 <input type="password">
+                 <a href="#" class="text">Esqueceu sua senha?</a>
+               </div>
+
+               <div class="user-login-actions">
+                 <button class="small button">Entrar</button>
+               </div>
+
+             </form>
+           </div>
+           
+          <% end %>
+
+        </div>
+      </header>
 
     <div id="content">
       <div id="content-inner">

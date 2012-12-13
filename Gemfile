@@ -11,7 +11,7 @@ gem "fog"
 gem "devise"
 gem "oily_png"
 gem "friendly_id"
-gem "simple_form"
+# gem "simple_form"
 gem "rufus-scheduler"
 gem "slim"
 

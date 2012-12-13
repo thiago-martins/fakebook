@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!
+
   # POST /comments
   def create
     @post = Post.find(params[:post_id])
